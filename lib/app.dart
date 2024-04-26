@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/features/auth/login_screen.dart';
+import 'package:flutter_application_1/features/course/course_screen.dart';
 import 'package:flutter_application_1/features/home/home_screen.dart';
 import 'package:flutter_application_1/layouts/default_layout.dart';
 import 'package:flutter_application_1/routes/routes.dart';
@@ -14,7 +15,10 @@ class MyApp extends StatelessWidget {
       initialRoute: "/",
       routes: routes,
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(useMaterial3: true),
+      theme: ThemeData(
+          useMaterial3: true,
+          colorScheme:
+              ColorScheme.fromSeed(seedColor: Color.fromRGBO(73, 162, 247, 0))),
     );
   }
 }
@@ -39,11 +43,7 @@ class MainScreen extends StatelessWidget {
             child: Text("인사말"),
           ),
         ),
-        Container(
-          child: Center(
-            child: Text("코스안내"),
-          ),
-        ),
+        CourseScreen(),
         Container(
           child: Center(
             child: Text("QR"),

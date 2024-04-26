@@ -2,25 +2,18 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_application_1/features/auth/providers/login_provider.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
-  Future<UserCredential> signInWithGoogle() async {
-    // Create a new provider
-    GoogleAuthProvider googleProvider = GoogleAuthProvider();
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
 
-    googleProvider
-        .addScope('https://www.googleapis.com/auth/contacts.readonly');
-    googleProvider.setCustomParameters({'login_hint': 'user@example.com'});
-
-    // Once signed in, return the UserCredential
-    return await FirebaseAuth.instance.signInWithPopup(googleProvider);
-
-    // Or use signInWithRedirect
-    // return await FirebaseAuth.instance.signInWithRedirect(googleProvider);
-  }
+class _LoginScreenState extends State<LoginScreen> {
+  final provider = LoginProvider();
 
   @override
   Widget build(BuildContext context) {
@@ -45,9 +38,7 @@ class LoginScreen extends StatelessWidget {
               ),
               GestureDetector(
                   onTap: () {
-                    signInWithGoogle().then((value) {
-                      print(value);
-                    });
+                    provider.googleLogin();
                   },
                   child: Image.asset(
                     'images/signin_google.png',

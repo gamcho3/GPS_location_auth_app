@@ -15,6 +15,14 @@
 - [ ] firebase 연동
 - [x] google Social Login 구현
 
+## 화면 별 구성 요소
+
+- **home**
+  - 현재 위치가 가까운 코스 리스트
+  - 최신순 생성된 코스 리스트
+  - 인기순 생성된 코스 리스트
+  - 사용자 후기
+
 ## firebase 연동 방법
 
 1. firebase 프로젝트 등록

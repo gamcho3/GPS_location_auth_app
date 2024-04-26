@@ -28,11 +28,6 @@ class _DefaultLayoutState extends State<DefaultLayout> {
             ),
           )
         ],
-        centerTitle: true,
-        title: Text(
-          "Location-Check",
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
       ),
       body: [...widget.children][curIndex],
       bottomNavigationBar: NavigationBar(
