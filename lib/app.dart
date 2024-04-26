@@ -17,6 +17,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
           useMaterial3: true,
+          fontFamily: "NanumSquare",
           colorScheme:
               ColorScheme.fromSeed(seedColor: Color.fromRGBO(73, 162, 247, 0))),
     );
