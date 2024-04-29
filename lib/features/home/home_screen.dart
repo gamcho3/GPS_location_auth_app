@@ -5,14 +5,22 @@ import 'package:flutter_application_1/const/theme.dart';
 import 'package:flutter_application_1/features/home/components/course_card.dart';
 import 'package:geolocator/geolocator.dart';
 
+import '../auth/providers/login_provider.dart';
+
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final provider = LoginProvider();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        ListenableBuilder(
+          builder: (context,child) {
+            return Text(provider.model?.email ?? "비어있음");
+          }, listenable: provider,
+        ),
         ElementTitle(
           title: "위치가 가장 가까운 코스",
         ),

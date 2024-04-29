@@ -40,7 +40,6 @@ dependencies:
   google_maps_flutter: ^2.6.1
   google_sign_in: ^6.2.1
   firebase_auth: ^4.19.3
-  provider: ^6.1.2
 
 dev_dependencies:
   flutter_test:
