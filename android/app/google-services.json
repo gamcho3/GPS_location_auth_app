@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "732202326990",
+    "project_id": "gps-location-check",
+    "storage_bucket": "gps-location-check.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:732202326990:android:4289b46b39fb46155de99f",
+        "android_client_info": {
+          "package_name": "com.example.flutter_application_1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBelGPy0TmQxvqHLRCRPvouj6wDFk02Sys"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,1 @@
+final MAIN_SCREEN_PADDING = 15.0;

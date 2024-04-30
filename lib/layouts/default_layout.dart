@@ -16,12 +16,23 @@ class _DefaultLayoutState extends State<DefaultLayout> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("GPS앱"),
+        leading: Image.asset("images/logo.png"),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: GestureDetector(
+              onTap: () => Navigator.of(context).pushNamed('/login'),
+              child: CircleAvatar(
+                backgroundImage: AssetImage("images/person.png"),
+              ),
+            ),
+          )
+        ],
       ),
       body: [...widget.children][curIndex],
       bottomNavigationBar: NavigationBar(
         selectedIndex: curIndex,
-        destinations: <Widget>[
+        destinations: const <Widget>[
           NavigationDestination(
             icon: Icon(Icons.home),
             label: '홈',
