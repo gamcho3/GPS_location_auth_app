@@ -2,11 +2,47 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/features/auth/model/account_model.dart';
+import 'package:flutter_application_1/features/common/logger.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-class LoginProvider with ChangeNotifier {
+class LoginProvider with ChangeNotifier ,CustomLogger{
   AccountModel? _model = null;
+
   AccountModel? get model => _model;
+
+  void signUp(email,password) async {
+    try {
+      final credential =
+          await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: email,
+        password: password,
+      );
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'weak-password') {
+        print('The password provided is too weak.');
+      } else if (e.code == 'email-already-in-use') {
+        print('The account already exists for that email.');
+      }
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  void normalLogin(email,password)async{
+    try {
+      final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: email,
+          password: password
+      );
+
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+      }
+    }
+  }
 
   void googleLogin() async {
     const List<String> scopes = <String>[
@@ -31,10 +67,8 @@ class LoginProvider with ChangeNotifier {
     }
   }
 
-  void autoLogin(){
-    FirebaseAuth.instance
-        .authStateChanges()
-        .listen((User? user) {
+  void autoLogin() {
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user == null) {
         print('User is currently signed out!');
       } else {

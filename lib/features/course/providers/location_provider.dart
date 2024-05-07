@@ -55,7 +55,6 @@ class LocationProvider with ChangeNotifier {
       zoom: 20,
     );
     mapController.animateCamera(CameraUpdate.newCameraPosition(position));
-    // _curPosition = LatLng(double.parse(lat), double.parse(long));
-    // notifyListeners();
+
   }
 }
