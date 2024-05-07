@@ -29,3 +29,10 @@
 2. [firebase CLI 설치 및 업데이트](https://firebase.google.com/docs/cli?hl=ko#install-cli-windows)
 3. firebase login 확인 후 프로젝트 명령어 실행 (cmd에서 실행)
 4. 설치 완료 후 firebase 관련 패키지 설치
+
+## 소셜로그인(구글) 연동방법
+
+1. "SigninWithGoogle" 패키지 설치
+2. Firebase DebugKey 등록
+3. debugkey 확인방법 : android 폴더이동 -> ./gradlew signingReport 터미널 입력
+4. SHA-1, SHA-256 등록

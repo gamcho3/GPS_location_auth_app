@@ -12,78 +12,9 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = LoginProvider();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        ListenableBuilder(
-          builder: (context,child) {
-            return Text(provider.model?.email ?? "비어있음");
-          }, listenable: provider,
-        ),
-        ElementTitle(
-          title: "위치가 가장 가까운 코스",
-        ),
-        SizedBox(
-          height: 200,
-          child: ListView.separated(
-              padding: EdgeInsets.symmetric(horizontal: MAIN_SCREEN_PADDING),
-              physics: BouncingScrollPhysics(),
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context, index) {
-                return CourseCard();
-              },
-              separatorBuilder: (context, index) {
-                return SizedBox(
-                  width: 20,
-                );
-              },
-              itemCount: 5),
-        ),
-        Divider(
-          height: 40,
-        ),
-        ElementTitle(title: "오늘의 코스"),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: MAIN_SCREEN_PADDING),
-          child: Stack(
-            children: [
-              Container(
-                height: 280,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  image: DecorationImage(
-                      image: AssetImage(
-                        "images/running2.jpg",
-                      ),
-                      fit: BoxFit.cover),
-                ),
-              ),
-              Positioned(
-                left: 10,
-                top: 10,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "대구 도심에서 펼쳐지는",
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                          color: Colors.white),
-                    ),
-                    Text("극한의 체력코스",
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                            color: Colors.white))
-                  ],
-                ),
-              ),
-            ],
-          ),
-        )
-      ],
+      children: [Center(child: Text("홈"))],
     );
   }
 }
@@ -102,7 +33,9 @@ class ElementTitle extends StatelessWidget {
         children: [
           Text(
             title,
-            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            style: TextStyle(
+              fontSize: 20,
+            ),
           ),
         ],
       ),

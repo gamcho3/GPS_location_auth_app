@@ -10,7 +10,7 @@ class CourseCard extends StatelessWidget {
     return SizedBox(
       width: 150,
       child: Card(
-        clipBehavior: Clip.antiAlias,
+        // clipBehavior: Clip.antiAlias,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -22,7 +22,9 @@ class CourseCard extends StatelessWidget {
                 children: [
                   Text(
                     "초심자 코스",
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 20,
+                    ),
                   ),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,

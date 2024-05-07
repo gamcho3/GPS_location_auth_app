@@ -1,25 +1,35 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/features/auth/login_screen.dart';
+import 'package:flutter_application_1/features/auth/providers/login_provider.dart';
 import 'package:flutter_application_1/features/course/course_screen.dart';
+import 'package:flutter_application_1/features/course/providers/location_provider.dart';
 import 'package:flutter_application_1/features/home/home_screen.dart';
 import 'package:flutter_application_1/layouts/default_layout.dart';
 import 'package:flutter_application_1/routes/routes.dart';
+import 'package:provider/provider.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      initialRoute: "/",
-      routes: routes,
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => LoginProvider()),
+        ChangeNotifierProvider(create: (_) => LocationProvider())
+      ],
+      child: MaterialApp(
+        initialRoute: "/",
+        routes: routes,
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
           useMaterial3: true,
           fontFamily: "NanumSquare",
-          colorScheme:
-              ColorScheme.fromSeed(seedColor: Color.fromRGBO(73, 162, 247, 0))),
+          colorScheme: ColorScheme.fromSeed(
+              seedColor: Color.fromRGBO(73, 162, 247, 0))
+        ),
+      ),
     );
   }
 }
@@ -31,11 +41,6 @@ class MainScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FirebaseAuth auth = FirebaseAuth.instance;
-
-    if (auth.currentUser != null) {
-      print('user uid ::: ${auth.currentUser?.uid}');
-    }
     return DefaultLayout(
       children: [
         HomeScreen(),

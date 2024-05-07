@@ -9,20 +9,6 @@ class LoginProvider with ChangeNotifier {
   AccountModel? get model => _model;
 
   void googleLogin() async {
-    // web으로 구현할때
-    // // Create a new provider
-    // GoogleAuthProvider googleProvider = GoogleAuthProvider();
-
-    // googleProvider
-    //     .addScope('https://www.googleapis.com/auth/contacts.readonly');
-    // googleProvider.setCustomParameters({'login_hint': 'user@example.com'});
-
-    // // Once signed in, return the UserCredential
-    // await FirebaseAuth.instance.signInWithPopup(googleProvider);
-
-    // // Or use signInWithRedirect
-    // // return await FirebaseAuth.instance.signInWithRedirect(googleProvider);
-
     const List<String> scopes = <String>[
       'email',
       'https://www.googleapis.com/auth/contacts.readonly',
@@ -43,5 +29,17 @@ class LoginProvider with ChangeNotifier {
     } catch (error) {
       print(error);
     }
+  }
+
+  void autoLogin(){
+    FirebaseAuth.instance
+        .authStateChanges()
+        .listen((User? user) {
+      if (user == null) {
+        print('User is currently signed out!');
+      } else {
+        print('User is signed in!');
+      }
+    });
   }
 }

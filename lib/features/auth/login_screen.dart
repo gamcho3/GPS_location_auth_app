@@ -30,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
               Text(
                 "다양한 기능을 사용하려면 \n 로그인이 필요합니다.",
-                textAlign: TextAlign.center,
+                // textAlign: TextAlign.center,
                 style: TextStyle(fontSize: 20),
               ),
               SizedBox(
