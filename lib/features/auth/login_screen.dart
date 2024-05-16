@@ -97,6 +97,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Colors.white),
                         onPressed: () {
+                          context.read<LoginProvider>().googleLogin();
                           // context.read<LoginProvider>().signUp("test@test.com", "1qaz2wsx");
                         },
                         child: Text("구글로 로그인"),

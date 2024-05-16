@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/features/auth/login_screen.dart';
 import 'package:flutter_application_1/features/auth/providers/login_provider.dart';
+import 'package:flutter_application_1/features/auth/repository/auth_repository.dart';
 import 'package:flutter_application_1/features/course/course_screen.dart';
 import 'package:flutter_application_1/features/course/providers/location_provider.dart';
 import 'package:flutter_application_1/features/home/home_screen.dart';
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (_) => LoginProvider()),
+        ChangeNotifierProvider(create: (_) => LoginProvider(authRepository: AuthRepositoryImpl())),
         ChangeNotifierProvider(create: (_) => LocationProvider())
       ],
       child: MaterialApp(

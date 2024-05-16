@@ -45,11 +45,17 @@ class _CourseScreenState extends State<CourseScreen> {
               List<CourseModel>() => Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    ...list.map((e) => ElevatedButton(
-                        onPressed: () =>
-                            provider.moveSpots(lat:  e.latitude,long:  e.longitude,controller: _controller),
-                        child: Text(e.name))),
-                    ElevatedButton(
+                    ...list.map((e) => Row(
+                      children: [
+                        Checkbox(value: true, onChanged: null),
+                        TextButton(
+                            onPressed: () =>
+                                provider.moveSpots(lat:  e.latitude,long:  e.longitude,controller: _controller),
+                            child: Text(e.name)),
+                      ],
+                    )),
+                    // 현재 위치 버튼 추가
+                    TextButton(
                         onPressed: () => provider.moveSpots(lat: location!.latitude.toString(), long: location.longitude.toString(), controller: _controller),
                         child: Text("현재위치"))
                   ],
